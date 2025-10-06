@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using CloudFlare.Client.Api.Display;
 using CloudFlare.Client.Api.Result;
 using CloudFlare.Client.Api.Zones;
+using CloudFlare.Client.Client.Certificates;
 
 namespace CloudFlare.Client.Client.Zones;
 
@@ -47,6 +48,12 @@ public interface IZones
     /// </summary>
     /// <value>The implementation of the worker routes interaction</value>
     public IWorkerRoutes WorkerRoutes { get; }
+
+    /// <summary>
+    /// Client certificates
+    /// </summary>
+    /// <value>The implementation of the client certificates interaction</value>
+    public IClientCertificates ClientCertificates { get; }
 
     /// <summary>
     /// Create a new zone
