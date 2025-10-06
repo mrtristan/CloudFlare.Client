@@ -17,6 +17,12 @@ public enum ClientCertificateStatus
     Active,
 
     /// <summary>
+    /// Pending Reactivation
+    /// </summary>
+    [EnumMember(Value = "pending_reactivation")]
+    PendingReactivation,
+
+    /// <summary>
     /// Pending Revocation
     /// </summary>
     [EnumMember(Value = "pending_revocation")]

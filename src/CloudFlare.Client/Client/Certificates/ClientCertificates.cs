@@ -60,6 +60,6 @@ public class ClientCertificates : ApiContextBase<IConnection>, IClientCertificat
     public async Task<CloudFlareResult<ClientCertificate>> ReactivateAsync(string zoneId, string clientCertificateId, CancellationToken cancellationToken = default)
     {
         var requestUri = new RelativeUri($"{ZoneEndpoints.Base}/{zoneId}/{ClientCertificateEndpoints.Base}/{clientCertificateId}");
-        return await Connection.PatchAsync<ClientCertificate, object>(requestUri, string.Empty, cancellationToken).ConfigureAwait(false);
+        return await Connection.PatchAsync<ClientCertificate, object>(requestUri, new { reactivate = true}, cancellationToken).ConfigureAwait(false);
     }
 }
