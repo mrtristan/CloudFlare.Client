@@ -33,7 +33,7 @@ public class AccountsUnitTests
     [Fact]
     public async Task TestGetAccountsAsync()
     {
-        var displayOptions = new DisplayOptions { Page = 1, PerPage = 20, Order = OrderType.Asc };
+        var accountFilter = new AccountFilter { Page = 1, PerPage = 20, Direction = OrderType.Asc };
 
         _wireMockServer
             .Given(Request.Create().WithPath($"/{AccountEndpoints.Base}")
@@ -46,7 +46,7 @@ public class AccountsUnitTests
 
         using var client = new CloudFlareClient(WireMockConnection.ApiKeyAuthentication, _connectionInfo);
 
-        var accounts = await client.Accounts.GetAsync(displayOptions);
+        var accounts = await client.Accounts.GetAsync(accountFilter);
 
         accounts.Result.Should().BeEquivalentTo(AccountTestData.Accounts);
     }

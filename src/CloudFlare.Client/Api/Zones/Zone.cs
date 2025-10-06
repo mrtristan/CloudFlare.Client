@@ -120,4 +120,34 @@ public class Zone
     /// </summary>
     [JsonProperty("name_servers")]
     public IReadOnlyList<string> NameServers { get; set; }
+
+    /// <summary>
+    /// An array of domains used for custom name servers. This is only available for Business and Enterprise plans
+    /// </summary>
+    [JsonProperty("vanity_name_servers")]
+    public IReadOnlyList<string> VanityNameServers { get; set; }
+
+    /// <summary>
+    /// Verification key for partial zone setup
+    /// </summary>
+    [JsonProperty("verification_key")]
+    public string VerificationKey { get; set; }
+
+    /// <summary>
+    /// CNAME suffix for the zone
+    /// </summary>
+    [JsonProperty("cname_suffix")]
+    public string CnameSuffix { get; set; }
+
+    /// <summary>
+    /// Zone metadata
+    /// </summary>
+    [JsonProperty("meta")]
+    public ZoneMeta Meta { get; set; }
+
+    /// <summary>
+    /// Tenant information for the zone
+    /// </summary>
+    [JsonProperty("tenant")]
+    public ZoneTenant Tenant { get; set; }
 }

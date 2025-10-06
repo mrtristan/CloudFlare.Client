@@ -70,7 +70,7 @@ public class Zones : ApiContextBase<IConnection>, IZones
     }
 
     /// <inheritdoc />
-    public async Task<CloudFlareResult<IReadOnlyList<Zone>>> GetAsync(ZoneFilter filter = null, DisplayOptions displayOptions = null, CancellationToken cancellationToken = default)
+    public async Task<CloudFlareResult<IReadOnlyList<Zone>>> GetAsync(ZoneFilter filter = null, CancellationToken cancellationToken = default)
     {
         var parameters = new ParameterBuilder()
             .InsertValue(Filtering.AccountId, filter?.AccountId)
@@ -78,9 +78,10 @@ public class Zones : ApiContextBase<IConnection>, IZones
             .InsertValue(Filtering.Name, filter?.Name)
             .InsertValue(Filtering.Status, filter?.Status)
             .InsertValue(Filtering.Match, filter?.Match)
-            .InsertValue(Filtering.Page, displayOptions?.Page)
-            .InsertValue(Filtering.PerPage, displayOptions?.PerPage)
-            .InsertValue(Filtering.Order, displayOptions?.Order);
+            .InsertValue(Filtering.Page, filter?.Page)
+            .InsertValue(Filtering.PerPage, filter?.PerPage)
+            .InsertValue(Filtering.Order, filter?.Order)
+            .InsertValue(Filtering.Direction, filter?.Direction);
 
         var requestUri = new RelativeUri(ZoneEndpoints.Base).AddParameters(parameters);
         return await Connection.GetAsync<IReadOnlyList<Zone>>(requestUri, cancellationToken).ConfigureAwait(false);

@@ -40,12 +40,13 @@ public class Accounts : ApiContextBase<IConnection>, IAccounts
     public ITurnStileWidgets TurnStileWidgets { get; }
 
     /// <inheritdoc />
-    public async Task<CloudFlareResult<IReadOnlyList<Account>>> GetAsync(DisplayOptions displayOptions = null, CancellationToken cancellationToken = default)
+    public async Task<CloudFlareResult<IReadOnlyList<Account>>> GetAsync(AccountFilter filter = null, CancellationToken cancellationToken = default)
     {
         var parameters = new ParameterBuilder()
-            .InsertValue(Filtering.Page, displayOptions?.Page)
-            .InsertValue(Filtering.PerPage, displayOptions?.PerPage)
-            .InsertValue(Filtering.Direction, displayOptions?.Order);
+            .InsertValue(Filtering.Name, filter?.Name)
+            .InsertValue(Filtering.Page, filter?.Page)
+            .InsertValue(Filtering.PerPage, filter?.PerPage)
+            .InsertValue(Filtering.Direction, filter?.Direction);
 
         var requestUri = new RelativeUri(AccountEndpoints.Base).AddParameters(parameters);
 

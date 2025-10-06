@@ -18,7 +18,8 @@ public class ZoneTest
             "id", "name", "development_mode", "original_name_servers", "original_registrar",
             "original_dnshost", "created_on", "modified_on", "activated_on", "owner",
             "account", "permissions", "plan", "plan_pending", "status",
-            "paused", "type", "name_servers"
+            "paused", "type", "name_servers", "vanity_name_servers", "verification_key",
+            "cname_suffix", "meta", "tenant"
         });
     }
 }

@@ -39,10 +39,10 @@ public interface IAccounts
     /// <summary>
     /// List all accounts you have ownership or verified access to
     /// </summary>
-    /// <param name="displayOptions">Display options</param>
+    /// <param name="filter">Account filtering options</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns>The requested account</returns>
-    Task<CloudFlareResult<IReadOnlyList<Account>>> GetAsync(DisplayOptions displayOptions = null, CancellationToken cancellationToken = default);
+    Task<CloudFlareResult<IReadOnlyList<Account>>> GetAsync(AccountFilter filter = null, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get information about a specific account that you are a member of

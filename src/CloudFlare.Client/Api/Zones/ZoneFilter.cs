@@ -1,4 +1,5 @@
 ﻿using CloudFlare.Client.Enumerators;
+using Newtonsoft.Json;
 
 namespace CloudFlare.Client.Api.Zones;
 
@@ -8,27 +9,56 @@ namespace CloudFlare.Client.Api.Zones;
 public class ZoneFilter
 {
     /// <summary>
-    /// A domain name
+    /// A domain name to filter zones by. This performs an exact match search.
     /// </summary>
+    [JsonProperty("name")]
     public string Name { get; set; }
 
     /// <summary>
     /// Status of the zone
     /// </summary>
+    [JsonProperty("status")]
     public ZoneStatus? Status { get; set; }
 
     /// <summary>
-    /// Whether to match all search requirements or at least one
+    /// Whether to match all search requirements or at least one (any/all)
     /// </summary>
-    public bool? Match { get; set; }
+    [JsonProperty("match")]
+    public MatchType? Match { get; set; }
 
     /// <summary>
-    /// Account name
+    /// An account name to filter zones by. This performs an exact match search.
     /// </summary>
+    [JsonProperty("account.name")]
     public string AccountName { get; set; }
 
     /// <summary>
     /// Account identifier tag
     /// </summary>
+    [JsonProperty("account.id")]
     public string AccountId { get; set; }
+
+    /// <summary>
+    /// Page number of paginated results
+    /// </summary>
+    [JsonProperty("page")]
+    public int? Page { get; set; }
+
+    /// <summary>
+    /// Number of zones per page
+    /// </summary>
+    [JsonProperty("per_page")]
+    public int? PerPage { get; set; }
+
+    /// <summary>
+    /// Field to order zones by
+    /// </summary>
+    [JsonProperty("order")]
+    public ZoneOrder? Order { get; set; }
+
+    /// <summary>
+    /// Direction to order zones
+    /// </summary>
+    [JsonProperty("direction")]
+    public OrderType? Direction { get; set; }
 }

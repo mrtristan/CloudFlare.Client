@@ -56,7 +56,7 @@ public class ZonesUnitTests
     public async Task TestGetZonesAsync()
     {
         var displayOptions = new DisplayOptions { Page = 1, PerPage = 20, Order = OrderType.Asc };
-        var zoneFilter = new ZoneFilter { Match = false, Status = ZoneStatus.Active, Name = "tothnet.hu" };
+        var zoneFilter = new ZoneFilter { Match = MatchType.All, Status = ZoneStatus.Active, Name = "tothnet.hu" };
 
         _wireMockServer
             .Given(Request.Create()
