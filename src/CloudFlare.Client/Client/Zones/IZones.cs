@@ -76,10 +76,9 @@ public interface IZones
     /// List, search, sort, and filter zones
     /// </summary>
     /// <param name="filter">Zones filtering options</param>
-    /// <param name="displayOptions">Display options</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns>The requested zones</returns>
-    Task<CloudFlareResult<IReadOnlyList<Zone>>> GetAsync(ZoneFilter filter = null, DisplayOptions displayOptions = null, CancellationToken cancellationToken = default);
+    Task<CloudFlareResult<IReadOnlyList<Zone>>> GetAsync(ZoneFilter filter = null, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Get all details of the specified zone

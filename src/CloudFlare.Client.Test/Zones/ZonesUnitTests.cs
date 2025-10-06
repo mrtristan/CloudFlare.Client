@@ -55,8 +55,7 @@ public class ZonesUnitTests
     [Fact]
     public async Task TestGetZonesAsync()
     {
-        var displayOptions = new DisplayOptions { Page = 1, PerPage = 20, Order = OrderType.Asc };
-        var zoneFilter = new ZoneFilter { Match = MatchType.All, Status = ZoneStatus.Active, Name = "tothnet.hu" };
+        var zoneFilter = new ZoneFilter { Match = MatchType.All, Status = ZoneStatus.Active, Name = "tothnet.hu", Page = 1, PerPage = 20, Order = OrderType.Asc };
 
         _wireMockServer
             .Given(Request.Create()
@@ -73,7 +72,7 @@ public class ZonesUnitTests
 
         using var client = new CloudFlareClient(WireMockConnection.ApiKeyAuthentication, _connectionInfo);
 
-        var zones = await client.Zones.GetAsync(zoneFilter, displayOptions);
+        var zones = await client.Zones.GetAsync(zoneFilter);
 
         zones.Result.Should().BeEquivalentTo(ZoneTestData.Zones);
     }

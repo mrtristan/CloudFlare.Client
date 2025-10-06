@@ -1,4 +1,5 @@
-﻿using CloudFlare.Client.Enumerators;
+﻿using CloudFlare.Client.Api.Display;
+using CloudFlare.Client.Enumerators;
 using Newtonsoft.Json;
 
 namespace CloudFlare.Client.Api.Zones;
@@ -6,7 +7,7 @@ namespace CloudFlare.Client.Api.Zones;
 /// <summary>
 /// Zone filter
 /// </summary>
-public class ZoneFilter
+public class ZoneFilter : DisplayOptions
 {
     /// <summary>
     /// A domain name to filter zones by. This performs an exact match search.
@@ -37,24 +38,6 @@ public class ZoneFilter
     /// </summary>
     [JsonProperty("account.id")]
     public string AccountId { get; set; }
-
-    /// <summary>
-    /// Page number of paginated results
-    /// </summary>
-    [JsonProperty("page")]
-    public int? Page { get; set; }
-
-    /// <summary>
-    /// Number of zones per page
-    /// </summary>
-    [JsonProperty("per_page")]
-    public int? PerPage { get; set; }
-
-    /// <summary>
-    /// Field to order zones by
-    /// </summary>
-    [JsonProperty("order")]
-    public ZoneOrder? Order { get; set; }
 
     /// <summary>
     /// Direction to order zones
